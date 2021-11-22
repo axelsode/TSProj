@@ -9,37 +9,32 @@ interface IEntryField {
 
 export const EntryField: React.FC<IEntryField> = (props) => {
     return (
-        <View>
+        <View >
             <Text style={styles.label}>{props.label}</Text>
-            <TextInput defaultValue={props.defaultValue} onChangeText={props.OnTextChanged} style={styles.username} />
+            <TextInput defaultValue={props.defaultValue} onChangeText={props.OnTextChanged} style={styles.username}  />
         </View>
     )
 }
 
 const styles = StyleSheet.create(
     {
-        usernameContainer: {
-            flex: 1,
-            justifyContent: 'center',
-            backgroundColor: 'pink',
-            paddingHorizontal: 20,
-            marginVertical: 40,
-            marginHorizontal: 20
-        },
         username: {
-            backgroundColor: 'gray',
+            backgroundColor: '#ecf0ee',
             fontSize: 18,
-            borderColor: '#fff',
+            borderColor: 'black',
             borderWidth: 2,
             alignItems: 'center',
-            height: 40,
-            borderRadius: 10,
+            marginVertical: 30,
+            height: 50,
+            borderRadius: 15
         },
         label: {
-            color: '#fff',
+            color: 'black',
             fontSize: 20,
             fontWeight: 'bold',
             margin: 5,
+            
+            paddingLeft: 20,
         },
     }
 );
