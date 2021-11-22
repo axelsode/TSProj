@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { StackScreens } from '../../helpers/StackScreens';
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { FAB } from 'react-native-paper';
+import { FlatList, ScrollView } from 'react-native-gesture-handler';
 
 interface IMainScreen
 
@@ -15,6 +16,9 @@ export const MainScreen: React.FC<IMainScreen> = (props) => {
     <View style={styles.container}>
       <Text>Main screen</Text>
       <StatusBar style="auto" />
+      <ScrollView>
+        
+      </ScrollView>
       <FAB
         style={styles.fab}
         small
