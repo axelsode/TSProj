@@ -24,8 +24,10 @@ export const ProductScreen: React.FC<IProductScreen> = (props) => {
       <Text>Product screen</Text>
       <StatusBar style="auto" />
       <Text>Create new product</Text>
-      <EntryField label="Name" defaultValue="Name" OnTextChanged={(text) => setName(text)} />
-      <EntryField label="Price" defaultValue="Price"  OnTextChanged={(text) => setPrice(text)}/>
+      <EntryField label="Name" defaultValue="Name" 
+      OnTextChanged={(text) => setName(text)} />
+      <EntryField label="Price" defaultValue="Price" 
+      OnTextChanged={(text) => setPrice(text)} />
       <Picker
         selectedValue={selectedValue}
         style={{ height: 50, width: 150 }}
