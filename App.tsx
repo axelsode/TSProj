@@ -7,6 +7,7 @@ import { MainScreen } from './src/Screens/MainScreen/MainScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StackScreens } from './src/helpers/StackScreens';
 import { ProductScreen } from './src/Screens/ProductScreen/ProductScreen';
+import { EditProductScreen } from './src/Screens/EditProductScreen/EditProductScreen';
 
 const Stack = createNativeStackNavigator<StackScreens>();
 
@@ -15,6 +16,7 @@ const App = () =>
     <NavigationContainer>
       <Stack.Navigator initialRouteName="MainScreen">
         <Stack.Screen name="MainScreen" component={MainScreen} />
+        <Stack.Screen name="EditProductScreen" component={EditProductScreen} options={{ headerShown: false }} />
         <Stack.Screen name="ProductScreen" component={ProductScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
