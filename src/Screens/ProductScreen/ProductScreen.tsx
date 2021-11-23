@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import { Button, StyleSheet, Text, View} from 'react-native';
 import {Picker} from '@react-native-picker/picker'
 import { StackScreens } from '../../helpers/StackScreens';
@@ -8,6 +8,7 @@ import { FAB } from 'react-native-paper';
 import { CancelButton } from './components/CancelButton';
 import { AddButton } from './components/AddButton';
 import { EntryField } from './components/EntryField';
+import { DemoContext } from '../../context/DemoContext';
 
 interface IProductScreen
 
@@ -15,7 +16,7 @@ interface IProductScreen
   
 
 export const ProductScreen: React.FC<IProductScreen> = (props) => {
-  
+  const listItems = useContext(DemoContext)
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [selectedValue, setSelectedValue] = useState();
@@ -43,6 +44,8 @@ export const ProductScreen: React.FC<IProductScreen> = (props) => {
           onPress={() => {console.log(name),
             console.log(price)
             console.log(selectedValue)
+            listItems?.setSimpleText([...listItems.simpleText, { name:name, price:price, type:selectedValue}])
+            props.navigation.navigate("MainScreen")
          }} >
         </AddButton>
         <CancelButton onPress={() => {

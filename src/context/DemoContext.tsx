@@ -1,8 +1,8 @@
 import React from 'react'
-interface IDemoContext {
-    simpleText: string;
+export interface IDemoContext {
+    simpleText: any;
 
-    setSimpleText: (text: string) => void;
+    setSimpleText: (text: any) => void;
 
 }
 
@@ -12,12 +12,14 @@ export const DemoContext = React.createContext<IDemoContext | undefined>(undefin
 
 export const DemoContextProvider: React.FC = (props) => {
 
-    const [simpleText, setSimpleText] = React.useState('')
+    const [simpleText, setSimpleText] = React.useState([
+       
+      ])
 
     return (
         <DemoContext.Provider value={{
-            simpleText,
-            setSimpleText
+            simpleText: simpleText,
+            setSimpleText: setSimpleText
         }}>
             {props.children}
 
