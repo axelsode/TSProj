@@ -21,16 +21,18 @@ export const ProductScreen: React.FC<IProductScreen> = (props) => {
   const [selectedValue, setSelectedValue] = useState();
   return (
     <View style={styles.container}>
-      <Text>Product screen</Text>
       <StatusBar style="auto" />
-      <Text>Create new product</Text>
+      <Text style={styles.text}>Create new product</Text>
       <EntryField label="Name" defaultValue="Name" OnTextChanged={(text) => setName(text)} />
-      <EntryField label="Price" defaultValue="Price"  OnTextChanged={(text) => setPrice(text)}/>
+      <EntryField label="Price" defaultValue="Price" OnTextChanged={(text) => setPrice(text)}/>
       <Picker
         selectedValue={selectedValue}
-        style={{ height: 50, width: 150 }}
+        style={styles.picker}
         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+        
+        
       >
+        <Picker.Item label='Please select an option...' value='0' />
         <Picker.Item label="Integrated" value="Integrated" />
         <Picker.Item label="Peripheral" value="Peripheral" />
       </Picker>
@@ -51,6 +53,12 @@ export const ProductScreen: React.FC<IProductScreen> = (props) => {
 }
 
 const styles = StyleSheet.create({
+  text: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    marginBottom: 20,
+    
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -59,5 +67,13 @@ const styles = StyleSheet.create({
   },
   buttonConatiner:{
     flexDirection: 'row'
+  },
+  picker:{
+    height: 50, 
+    width: '80%', 
+    borderColor: 'black',
+    borderWidth: 2,
+    backgroundColor: '#ecf0ee',
+    
   }
 });

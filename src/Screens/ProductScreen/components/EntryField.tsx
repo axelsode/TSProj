@@ -9,9 +9,10 @@ interface IEntryField {
 
 export const EntryField: React.FC<IEntryField> = (props) => {
     return (
-        <View >
-            <Text style={styles.label}>{props.label}</Text>
-            <TextInput defaultValue={props.defaultValue} onChangeText={props.OnTextChanged} style={styles.username}  />
+        <View style={styles.input}>
+                <Text style={styles.label}>{props.label}</Text>
+                <TextInput placeholder={props.defaultValue} onChangeText={props.OnTextChanged} style={styles.username}  />
+            
         </View>
     )
 }
@@ -21,20 +22,22 @@ const styles = StyleSheet.create(
         username: {
             backgroundColor: '#ecf0ee',
             fontSize: 18,
-            borderColor: 'black',
-            borderWidth: 2,
             alignItems: 'center',
-            marginVertical: 30,
             height: 50,
-            borderRadius: 15
         },
         label: {
             color: 'black',
-            fontSize: 20,
+            fontSize: 10,
             fontWeight: 'bold',
-            margin: 5,
-            
-            paddingLeft: 20,
+            paddingLeft: 5,
+        },input: {
+            borderColor: 'black',
+            borderWidth: 2,
+            padding: 10,
+            margin: 10,
+            width: '80%',
+            borderRadius: 15,
+            backgroundColor: '#ecf0ee',
         },
     }
 );
