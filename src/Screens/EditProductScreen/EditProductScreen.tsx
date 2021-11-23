@@ -46,10 +46,8 @@ export const EditProductScreen: React.FC<IEditProductScreen> = (props) => {
           onPress={() => {console.log(name),
             console.log(price)
             console.log(selectedValue)
-            const list = listItems?.simpleText.map((item: { name: string; }) => { if (item.name !== params.nameId){
-              return item
-            }})
-            listItems?.setSimpleText([...list, { name:name, price:price, type:selectedValue}])
+            const newList = listItems?.simpleText.filter((item: { name: string, price: number, type: string }) => item.name != params.nameId).map(() => ({name, price, selectedValue}));
+            listItems?.setSimpleText([...newList, { name:name, price:price, type:selectedValue}])
             props.navigation.navigate("MainScreen")
          }} >
         </AddButton>
@@ -60,8 +58,10 @@ export const EditProductScreen: React.FC<IEditProductScreen> = (props) => {
       </View>
       <View style={styles.buttonConatiner}>
       <DeleteButton
-        onPress={() => {console.log(params.nameId),
-            listItems?.setSimpleText([...listItems.simpleText, { name:name, price:price, type:selectedValue}])
+        onPress={() => {console.log(params.nameId)
+          const newList = listItems?.simpleText.filter((item: { name: string, price: number, type: string }) => item.name != params.nameId).map(() => ({name, price, selectedValue}));
+          listItems?.setSimpleText([...newList, { name:name, price:price, type:selectedValue}])
+          listItems?.setSimpleText([...newList])
             props.navigation.navigate("MainScreen")
           }} >
         </DeleteButton>
