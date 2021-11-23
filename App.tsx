@@ -8,8 +8,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StackScreens } from './src/helpers/StackScreens';
 import { ProductScreen } from './src/Screens/ProductScreen/ProductScreen';
 import { EditProductScreen } from './src/Screens/EditProductScreen/EditProductScreen';
+import { setI18nConfig} from './src/helpers/translation/translations';
+
+
 
 const Stack = createNativeStackNavigator<StackScreens>();
+setI18nConfig();
 
 const App = () =>
   <DemoContextProvider>
