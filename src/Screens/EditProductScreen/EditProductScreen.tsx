@@ -6,33 +6,35 @@ import { StackScreens } from '../../helpers/StackScreens';
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { FAB } from 'react-native-paper';
 import { CancelButton } from './components/CancelButton';
-import { AddButton } from './components/AddButton';
+import { AddButton } from './components/EditButton';
+import {DeleteButton} from './components/DeleteButton'
 import { EntryField } from './components/EntryField';
 import { DemoContext } from '../../context/DemoContext';
 
 interface IEditProductScreen
 
-  extends NativeStackScreenProps<StackScreens, "EditProductScreen"> { }
+  extends NativeStackScreenProps<StackScreens, "EditProductScreen"> {nameId: string , price: number, type: string}
   
 
 export const EditProductScreen: React.FC<IEditProductScreen> = (props) => {
   const listItems = useContext(DemoContext)
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [selectedValue, setSelectedValue] = useState();
+  const params = props.route.params;
+  const [name, setName] = useState(params.nameId);
+  const [price, setPrice] = useState(params.price);
+  const [selectedValue, setSelectedValue] = useState(params.type);
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
 
       <Text style={styles.text}>Edit product</Text>
-      <EntryField label="Name" defaultValue="Name" OnTextChanged={(text) => setName(text)} />
-      <EntryField label="Price" defaultValue="Price" OnTextChanged={(text) => setPrice(text)}/>
+      <EntryField label="Name" defaultValue={params.nameId} OnTextChanged={(text) => setName(text)} />
+      <EntryField label="Price" defaultValue={params.price.toString()} OnTextChanged={(text) => setPrice(text)}/>
 
       <Picker
         selectedValue={selectedValue}
         style={styles.picker}
         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-        
         
       >
         <Picker.Item label='Please select an option...' value='0' />
@@ -44,15 +46,26 @@ export const EditProductScreen: React.FC<IEditProductScreen> = (props) => {
           onPress={() => {console.log(name),
             console.log(price)
             console.log(selectedValue)
-            listItems?.setSimpleText([...listItems.simpleText, { name:name, price:price, type:selectedValue}])
+            const list = listItems?.simpleText.map((item: { name: string; }) => { if (item.name !== params.nameId){
+              return item
+            }})
+            listItems?.setSimpleText([...list, { name:name, price:price, type:selectedValue}])
             props.navigation.navigate("MainScreen")
          }} >
         </AddButton>
         <CancelButton onPress={() => {
         props.navigation.navigate("MainScreen");
       }} ></CancelButton>
+        
       </View>
-      
+      <View style={styles.buttonConatiner}>
+      <DeleteButton
+        onPress={() => {console.log(params.nameId),
+            listItems?.setSimpleText([...listItems.simpleText, { name:name, price:price, type:selectedValue}])
+            props.navigation.navigate("MainScreen")
+          }} >
+        </DeleteButton>
+        </View>
     </View>
   );
 }

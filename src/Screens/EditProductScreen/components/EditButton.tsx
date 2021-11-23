@@ -16,7 +16,7 @@ export const AddButton: React.FC<IAddButton> = (props) => {
         <Pressable onPress={props.onPress} onPressIn={()=>{setIsPressed(true)}} onPressOut={()=>{setIsPressed(false)}}>
             <View style={[styles.button, isPressed?styles.pressIn:styles.default]}>
             <Text style={[styles.label,
-                isPressed?styles.pressIn:styles.default]}> Save </Text>
+                isPressed?styles.pressIn:styles.default]}> Edit </Text>
             <Feather style={[
                 isPressed?styles.pressIn:styles.default]}name="download" size={30} color="white" />
             </View>

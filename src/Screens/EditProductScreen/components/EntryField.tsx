@@ -6,18 +6,14 @@ interface IEntryField {
     OnTextChanged?: (text: string) => void;
     defaultValue?: string;
     
-    
 }
 
 export const EntryField: React.FC<IEntryField> = (props) => {
     return (
-
-
         <View style={styles.input}>
                 <Text style={styles.label}>{props.label}</Text>
                 <TextInput placeholder={props.defaultValue} onChangeText={props.OnTextChanged} style={styles.username}  />
             
-
         </View>
     )
 }

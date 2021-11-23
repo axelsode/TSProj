@@ -27,8 +27,9 @@ export const MainScreen: React.FC<IMainScreen> = (props) => {
       
       <FlatList 
       data={listItems?.simpleText} 
+      keyExtractor={listItems?.simpleText.nameId}
       renderItem={({item, index})=> (<ListItem key={index} name={item.name}
-      price={item.price} type={item.type} onPress={() => props.navigation.navigate("EditProductScreen")}/>)} 
+      price={item.price} type={item.type} onPress={() => props.navigation.navigate("EditProductScreen", {nameId: item.name, price: item.price, type: item.type})}/>)} 
      />
       <FAB
         style={styles.fab}
