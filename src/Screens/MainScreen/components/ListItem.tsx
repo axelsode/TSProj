@@ -3,6 +3,8 @@ import { View, Text, Pressable, StyleSheet } from 'react-native'
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { DemoContext } from '../../../context/DemoContext';
 import { Foundation } from '@expo/vector-icons';
+import { translate } from '../../../helpers/translation/translations';
+import { tokens } from '../../../helpers/translation/appStructure';
 
 export interface IListItem {
    
@@ -15,13 +17,13 @@ export interface IListItem {
 export const ListItem : React.FC<IListItem> = (props) => {
     const context = React.useContext(DemoContext)
     const [isPressed, setIsPressed] = useState(false);
-
+    const type = (props.type=="Peripheral")?translate(tokens.screens.screenMain.TypeType1): translate(tokens.screens.screenMain.TypeType2)
     return (
         <Pressable onPress={props.onPress} onPressIn={()=>{setIsPressed(true)}} onPressOut={()=>{setIsPressed(false)}}>
             <View style={[styles.button, isPressed?styles.pressIn:styles.default]}>
             
             <Text style={styles.label}> {props.name} </Text>     
-            <Text style={styles.label}> {props.type} </Text>    
+            <Text style={styles.label}> {type} </Text>    
             <Text style={styles.label}> $ {props.price} </Text>   
               
             </View>

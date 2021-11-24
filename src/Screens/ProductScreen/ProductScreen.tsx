@@ -30,17 +30,17 @@ export const ProductScreen: React.FC<IProductScreen> = (props) => {
       <StatusBar style="auto" />
 
       <Text style={styles.text}>{translate(tokens.screens.screenMain.NewProductText)}</Text>
-      <EntryField label="Name" defaultValue="Name" OnTextChanged={(text) => setName(text)} />
+      <EntryField label={translate(tokens.screens.screenProduct.NameText)}  defaultValue={translate(tokens.screens.screenProduct.NameText)}  OnTextChanged={(text) => setName(text)} />
       <Text style={styles.error}>{errorName}</Text>
-      <EntryField label="Price" defaultValue= "Price"  OnTextChanged={(text) => setPrice(text)}/>
+      <EntryField label={translate(tokens.screens.screenProduct.PriceText)} defaultValue= {translate(tokens.screens.screenProduct.PriceText)}  OnTextChanged={(text) => setPrice(text)}/>
       <Text>{errorPrice}</Text>
       <Picker
         selectedValue={selectedValue}
         style={styles.picker}
         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
 
-        <Picker.Item label="Peripheral" value="Peripheral" />  
-        <Picker.Item label="Integrated" value="Integrated" />
+        <Picker.Item label={translate(tokens.screens.screenMain.TypeType1)} value="Peripheral" />  
+        <Picker.Item label={translate(tokens.screens.screenMain.TypeType2)} value="Integrated" />
         
       </Picker>
         <View style={styles.buttonConatiner}>
@@ -56,13 +56,13 @@ export const ProductScreen: React.FC<IProductScreen> = (props) => {
               listItems?.setSimpleText([...listItems.simpleText, { name:name, price:price, type:selectedValue}])
               props.navigation.navigate("MainScreen")
             } else if(checkName || (name == "")) {
-              setErrorName("Name is error")
+              setErrorName(translate(tokens.screens.screenProduct.ErrorPrice1))
               setErrorPrice("")
             } else if(selectedValue == 'Peripheral'){
-              setErrorPrice("Peripheral products may be anywhere within the range of 1 to 999 dollars")
+              setErrorPrice(translate(tokens.screens.screenProduct.ErrorPrice1))
               setErrorName("")
             } else{
-              setErrorPrice("Integrated products may be anywhere within the range of 1000 to 2600 dollars")
+              setErrorPrice(translate(tokens.screens.screenProduct.ErrorPrice2))
               setErrorName("")
             }
             

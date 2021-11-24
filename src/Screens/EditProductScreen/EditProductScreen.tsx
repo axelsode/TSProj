@@ -11,6 +11,8 @@ import {DeleteButton} from './components/DeleteButton'
 import { EntryField } from './components/EntryFieldText';
 import { DemoContext } from '../../context/DemoContext';
 import { EntryFieldNumber } from './components/EntryFieldNumber';
+import { translate } from '../../helpers/translation/translations';
+import { tokens } from '../../helpers/translation/appStructure';
 
 interface IEditProductScreen
 
@@ -30,20 +32,20 @@ export const EditProductScreen: React.FC<IEditProductScreen> = (props) => {
     <View style={styles.container}>
       <StatusBar style="auto" />
 
-      <Text style={styles.text}>Edit product</Text>
-      <EntryField label="Name" defaultValue={params.nameId} OnTextChanged={(text) => setName(text)} />
-      <Text>{errorName}</Text>
-      <EntryFieldNumber label="Price" defaultValue={params.price} OnTextChanged={(text) => setPrice(text)}/>
-      <Text>{errorPrice}</Text>
+      <Text style={styles.text}>{translate(tokens.screens.screenEditProduct.HeaderName)}</Text>
+      <EntryField label={translate(tokens.screens.screenProduct.NameText)} defaultValue={params.nameId} OnTextChanged={(text) => setName(text)} />
+      <Text style={styles.error}>{errorName}</Text>
+      <EntryFieldNumber label={translate(tokens.screens.screenProduct.PriceText)} defaultValue={params.price} OnTextChanged={(text) => setPrice(text)}/>
+      <Text style={styles.error}>{errorPrice}</Text>
       <Picker
         selectedValue={selectedValue}
         style={styles.picker}
         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
         
       >
+        <Picker.Item label={translate(tokens.screens.screenMain.TypeType1)} value="Peripheral" />
+        <Picker.Item label={translate(tokens.screens.screenMain.TypeType2)} value="Integrated" />
         
-        <Picker.Item label="Integrated" value="Integrated" />
-        <Picker.Item label="Peripheral" value="Peripheral" />
       </Picker>
         <View style={styles.buttonConatiner}>
         <AddButton 
@@ -61,13 +63,13 @@ export const EditProductScreen: React.FC<IEditProductScreen> = (props) => {
               listItems?.setSimpleText([...newList, { name:name, price:price, type:selectedValue}])
               props.navigation.navigate("MainScreen")
           } else if(checkName || (name == "")) {
-            setErrorName("Name is error")
+            setErrorName(translate(tokens.screens.screenProduct.ErrorName))
             setErrorPrice("")
           } else if(selectedValue == 'Peripheral'){
-            setErrorPrice("Peripheral products may be anywhere within the range of 1 to 999 dollars")
+            setErrorPrice(translate(tokens.screens.screenProduct.ErrorPrice1))
             setErrorName("")
           } else{
-            setErrorPrice("Integrated products may be anywhere within the range of 1000 to 2600 dollars")
+            setErrorPrice(tokens.screens.screenProduct.ErrorPrice2)
             setErrorName("")
           }
          }} >
@@ -115,5 +117,9 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     backgroundColor: '#ecf0ee',
     
+  },
+  error:{
+    color: 'red',
+    fontSize: 10
   }
 });
