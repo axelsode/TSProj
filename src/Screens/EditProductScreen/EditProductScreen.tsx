@@ -8,8 +8,9 @@ import { FAB } from 'react-native-paper';
 import { CancelButton } from './components/CancelButton';
 import { AddButton } from './components/EditButton';
 import {DeleteButton} from './components/DeleteButton'
-import { EntryField } from './components/EntryField';
+import { EntryField } from './components/EntryFieldText';
 import { DemoContext } from '../../context/DemoContext';
+import { EntryFieldNumber } from './components/EntryFieldNumber';
 
 interface IEditProductScreen
 
@@ -29,15 +30,14 @@ export const EditProductScreen: React.FC<IEditProductScreen> = (props) => {
 
       <Text style={styles.text}>Edit product</Text>
       <EntryField label="Name" defaultValue={params.nameId} OnTextChanged={(text) => setName(text)} />
-      <EntryField label="Price" defaultValue={params.price.toString()} OnTextChanged={(text) => setPrice(text)}/>
+      <EntryFieldNumber label="Price" defaultValue={params.price} OnTextChanged={(text) => setPrice(text)}/>
 
       <Picker
         selectedValue={selectedValue}
         style={styles.picker}
         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-        
       >
-        
+      
         <Picker.Item label="Integrated" value="Integrated" />
         <Picker.Item label="Peripheral" value="Peripheral" />
       </Picker>
