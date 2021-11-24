@@ -33,7 +33,7 @@ export const ProductScreen: React.FC<IProductScreen> = (props) => {
       <EntryField label={translate(tokens.screens.screenProduct.NameText)}  defaultValue={translate(tokens.screens.screenProduct.NameText)}  OnTextChanged={(text) => setName(text)} />
       <Text style={styles.error}>{errorName}</Text>
       <EntryField label={translate(tokens.screens.screenProduct.PriceText)} defaultValue= {translate(tokens.screens.screenProduct.PriceText)}  OnTextChanged={(text) => setPrice(text)}/>
-      <Text>{errorPrice}</Text>
+      <Text style={styles.error}>{errorPrice}</Text>
       <Picker
         selectedValue={selectedValue}
         style={styles.picker}
@@ -56,7 +56,7 @@ export const ProductScreen: React.FC<IProductScreen> = (props) => {
               listItems?.setSimpleText([...listItems.simpleText, { name:name, price:price, type:selectedValue}])
               props.navigation.navigate("MainScreen")
             } else if(checkName || (name == "")) {
-              setErrorName(translate(tokens.screens.screenProduct.ErrorPrice1))
+              setErrorName(translate(tokens.screens.screenProduct.ErrorName))
               setErrorPrice("")
             } else if(selectedValue == 'Peripheral'){
               setErrorPrice(translate(tokens.screens.screenProduct.ErrorPrice1))
