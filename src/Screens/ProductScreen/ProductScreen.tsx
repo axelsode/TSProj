@@ -34,9 +34,8 @@ export const ProductScreen: React.FC<IProductScreen> = (props) => {
       <Text style={styles.error}>{errorName}</Text>
       <EntryField label={translate(tokens.screens.screenProduct.PriceText)} defaultValue= {translate(tokens.screens.screenProduct.PriceText)}  OnTextChanged={(text) => setPrice(text)}/>
       <Text style={styles.error}>{errorPrice}</Text>
-      <Picker
+      <Picker style={styles.picker}
         selectedValue={selectedValue}
-        style={styles.picker}
         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
 
         <Picker.Item label={translate(tokens.screens.screenMain.TypeType1)} value="Peripheral" />  
@@ -99,6 +98,8 @@ const styles = StyleSheet.create({
     width: '80%', 
     borderColor: 'black',
     borderWidth: 2,
+    marginTop: 20,
+    marginBottom: 30,
     backgroundColor: '#ecf0ee',
     
   },
