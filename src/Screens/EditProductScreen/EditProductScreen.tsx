@@ -37,7 +37,7 @@ export const EditProductScreen: React.FC<IEditProductScreen> = (props) => {
         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
         
       >
-        <Picker.Item label='Please select an option...' value='0' />
+        
         <Picker.Item label="Integrated" value="Integrated" />
         <Picker.Item label="Peripheral" value="Peripheral" />
       </Picker>
@@ -46,7 +46,10 @@ export const EditProductScreen: React.FC<IEditProductScreen> = (props) => {
           onPress={() => {console.log(name),
             console.log(price)
             console.log(selectedValue)
-            const newList = listItems?.simpleText.filter((item: { name: string, price: number, type: string }) => item.name != params.nameId).map(() => ({name, price, selectedValue}));
+            
+            const newList = listItems?.simpleText.filter(function (el: any) {
+              return el.name != params.nameId    
+            })
             listItems?.setSimpleText([...newList, { name:name, price:price, type:selectedValue}])
             props.navigation.navigate("MainScreen")
          }} >
@@ -59,8 +62,9 @@ export const EditProductScreen: React.FC<IEditProductScreen> = (props) => {
       <View style={styles.buttonConatiner}>
       <DeleteButton
         onPress={() => {console.log(params.nameId)
-          const newList = listItems?.simpleText.filter((item: { name: string, price: number, type: string }) => item.name != params.nameId).map(() => ({name, price, selectedValue}));
-          listItems?.setSimpleText([...newList, { name:name, price:price, type:selectedValue}])
+          const newList = listItems?.simpleText.filter(function (el: any) {
+            return el.name != params.nameId    
+          })
           listItems?.setSimpleText([...newList])
             props.navigation.navigate("MainScreen")
           }} >

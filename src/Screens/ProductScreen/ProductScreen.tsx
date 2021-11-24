@@ -19,7 +19,7 @@ export const ProductScreen: React.FC<IProductScreen> = (props) => {
   const listItems = useContext(DemoContext)
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
-  const [selectedValue, setSelectedValue] = useState();
+  const [selectedValue, setSelectedValue] = useState("Integrated");
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
@@ -35,7 +35,7 @@ export const ProductScreen: React.FC<IProductScreen> = (props) => {
         
         
       >
-        <Picker.Item label='Please select an option...' value='0' />
+      
         <Picker.Item label="Integrated" value="Integrated" />
         <Picker.Item label="Peripheral" value="Peripheral" />
       </Picker>
