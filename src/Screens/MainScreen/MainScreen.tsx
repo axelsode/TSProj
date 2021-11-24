@@ -4,10 +4,11 @@ import { StyleSheet, Text, View } from 'react-native';
 import { StackScreens } from '../../helpers/StackScreens';
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { FAB } from 'react-native-paper';
-import { ListItem, IListItem } from './components/ListItem';
-import { FlatList, ScrollView } from 'react-native-gesture-handler';
-import { Item } from 'react-native-paper/lib/typescript/components/List/List';
+import { ListItem } from './components/ListItem';
+import { FlatList} from 'react-native-gesture-handler';
 import { DemoContext } from '../../context/DemoContext';
+import { translate } from '../../helpers/translation/translations';
+import { tokens } from '../../helpers/translation/appStructure'
 
 interface IMainScreen
 
@@ -21,7 +22,7 @@ export const MainScreen: React.FC<IMainScreen> = (props) => {
   
   return (
     <View style={styles.container}>
-      <Text>Main screen</Text>
+      <Text>{translate(tokens.screens.screenMain.MainText)}</Text>
       
       <StatusBar style="auto" />
       

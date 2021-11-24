@@ -73,7 +73,7 @@ export const EditProductScreen: React.FC<IEditProductScreen> = (props) => {
 const styles = StyleSheet.create({
   text: {
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 30,
     marginBottom: 20,
     
   },

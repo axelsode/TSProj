@@ -32,13 +32,13 @@ const styles = StyleSheet.create({
         height: 50,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#ecf0ee',
+        backgroundColor: '#5c5a5a',
         borderColor: 'black',
         borderWidth: 2,
         borderRadius: 15
     },
     label: {
-        color: 'black',
+        color: 'white',
         fontSize: 30,
        
     },
