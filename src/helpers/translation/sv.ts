@@ -1,6 +1,20 @@
 import { tokens } from "./appStructure";
 export const swedish = {
-  [tokens.screens.screenMain.MainText]: "Välkommen till min app!",
-
- 
+  [tokens.screens.screenMain.MainText]: "Varor",
+  [tokens.screens.screenMain.SaveText]: "Spara",
+  [tokens.screens.screenMain.CancelText]: "Avbryt",
+  [tokens.screens.screenMain.DeleteText]: "Radera",
+  [tokens.screens.screenMain.EditText]: "Redigera",
+  [tokens.screens.screenMain.NewProductText]: "Skapa ny product",
+  [tokens.screens.screenMain.NameText]: "Namn",
+  [tokens.screens.screenMain.PriceText]: "Pris",
+  [tokens.screens.screenMain.TypeText]: "Typ",
+  [tokens.screens.screenMain.TypeType1]: "Kringutrustning",
+  [tokens.screens.screenMain.TypeType2]: "Integrerad",
+  [tokens.screens.screenProduct.NameText]: "Namn",
+  [tokens.screens.screenProduct.PriceText]: "Pris",
+  [tokens.screens.screenProduct.ErrorName]: "Varan existerar redan eller namet är för kort",
+  [tokens.screens.screenProduct.ErrorPrice1]: "Kringutrustning måste ha ett pris mellan 0 till 1000 dollar",
+  [tokens.screens.screenProduct.ErrorPrice2]: "Integrerad måste ha ett pris mellan 1000 till 2600 dollar",
+  [tokens.screens.screenEditProduct.HeaderName]: "Modifiera varan",
 };
