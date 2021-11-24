@@ -9,31 +9,32 @@ import { CancelButton } from './components/CancelButton';
 import { AddButton } from './components/AddButton';
 import { EntryField } from './components/EntryField';
 import { DemoContext } from '../../context/DemoContext';
+import { useTranslation } from '../../../src/context/LanguageContext';
 
 interface IProductScreen
 
   extends NativeStackScreenProps<StackScreens, "ProductScreen"> { }
   
-
 export const ProductScreen: React.FC<IProductScreen> = (props) => {
   const listItems = useContext(DemoContext)
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [selectedValue, setSelectedValue] = useState();
+  const {hello} = useTranslation();
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
 
       <Text style={styles.text}>Create new product</Text>
+      <Text style={styles.text}>{hello}</Text>
       <EntryField label="Name" defaultValue="Name" OnTextChanged={(text) => setName(text)} />
-      <EntryField label="Price" defaultValue="Price" OnTextChanged={(text) => setPrice(text)}/>
+      <EntryField label={"Price"} defaultValue="Price" OnTextChanged={(text) => setPrice(text)}/>
 
       <Picker
         selectedValue={selectedValue}
         style={styles.picker}
         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-        
-        
+
       >
         <Picker.Item label='Please select an option...' value='0' />
         <Picker.Item label="Integrated" value="Integrated" />
@@ -79,6 +80,5 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 2,
     backgroundColor: '#ecf0ee',
-    
   }
 });

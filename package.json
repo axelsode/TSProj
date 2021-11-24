@@ -21,6 +21,7 @@
     "react-native": "0.64.3",
     "react-native-dropdown-picker": "^5.2.3",
     "react-native-gesture-handler": "~1.10.2",
+    "react-native-localize": "^2.1.5",
     "react-native-paper": "^4.10.1",
     "react-native-web": "0.17.1",
     "react-navigation": "^4.4.4"
