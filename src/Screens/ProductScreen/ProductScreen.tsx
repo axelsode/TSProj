@@ -44,8 +44,12 @@ export const ProductScreen: React.FC<IProductScreen> = (props) => {
           onPress={() => {console.log(name),
             console.log(price)
             console.log(selectedValue)
-            listItems?.setSimpleText([...listItems.simpleText, { name:name, price:price, type:selectedValue}])
-            props.navigation.navigate("MainScreen")
+            if((parseInt(price) > 0) && (selectedValue=='Integrated') && (parseInt(price) < 1000) ||
+             ((parseInt(price) >= 1000) && (selectedValue=='Peripheral'))){
+              listItems?.setSimpleText([...listItems.simpleText, { name:name, price:price, type:selectedValue}])
+              props.navigation.navigate("MainScreen")
+            }
+            
          }} >
         </AddButton>
         <CancelButton onPress={() => {
