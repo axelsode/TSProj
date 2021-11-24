@@ -3,8 +3,8 @@ import { View, Text, TextInput, StyleSheet } from 'react-native';
 
 interface IEntryFieldNumber {
     label: string;
-    OnValueChanged?: (text: number) => void;
-    defaultValue?: number;
+    OnTextChanged?: (text: string) => void;
+    defaultValue?: string;
 }
 
 export const EntryFieldNumber: React.FC<IEntryFieldNumber> = (props) => {
@@ -13,7 +13,7 @@ export const EntryFieldNumber: React.FC<IEntryFieldNumber> = (props) => {
                 <Text style={styles.label}>{props.label}</Text>
                 <TextInput 
                 placeholder={props.defaultValue?.toString()} 
-                onChangeText={props.OnValueChanged?.toString} 
+                onChangeText={props.OnTextChanged?.toString} 
                 style={styles.username}
                 keyboardType="phone-pad"
                 />
