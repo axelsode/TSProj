@@ -3,6 +3,8 @@ import { View, Text, Pressable, StyleSheet } from 'react-native'
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { DemoContext } from '../../../context/DemoContext';
 import { AntDesign } from '@expo/vector-icons'; 
+import { translate } from '../../../helpers/translation/translations';
+import { tokens } from '../../../helpers/translation/appStructure';
 
 interface IDeleteButton {
 
@@ -17,7 +19,7 @@ export const DeleteButton: React.FC<IDeleteButton> = (props) => {
         <Pressable onPress={props.onPress} onPressIn={()=>{setIsPressed(true)}} onPressOut={()=>{setIsPressed(false)}}>
             <View style={[styles.button, isPressed?styles.pressIn:styles.default]}>
             <Text style={[styles.label,
-                isPressed?styles.pressIn:styles.default]}> Delete </Text>
+                isPressed?styles.pressIn:styles.default]}> {translate(tokens.screens.screenMain.DeleteText)} </Text>
             <AntDesign name="delete" size={24} color="white" />
             </View>
         </Pressable>

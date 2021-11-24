@@ -19,7 +19,7 @@ const App = () =>
   <DemoContextProvider>
     <NavigationContainer>
       <Stack.Navigator initialRouteName="MainScreen">
-        <Stack.Screen name="MainScreen" component={MainScreen} />
+        <Stack.Screen name="MainScreen" component={MainScreen} options={{ headerShown: false }} />
         <Stack.Screen name="EditProductScreen" component={EditProductScreen} options={{ headerShown: false }} />
         <Stack.Screen name="ProductScreen" component={ProductScreen} options={{ headerShown: false }} />
       </Stack.Navigator>

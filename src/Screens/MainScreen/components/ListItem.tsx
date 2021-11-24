@@ -20,10 +20,10 @@ export const ListItem : React.FC<IListItem> = (props) => {
         <Pressable onPress={props.onPress} onPressIn={()=>{setIsPressed(true)}} onPressOut={()=>{setIsPressed(false)}}>
             <View style={[styles.button, isPressed?styles.pressIn:styles.default]}>
             
-            <Text style={styles.label}> {props.name} </Text>        
-            <Text style={styles.label}> {props.price} </Text>   
-            <Text style={styles.label}
-                > {props.type} </Text>   
+            <Text style={styles.label}> {props.name} </Text>     
+            <Text style={styles.label}> {props.type} </Text>    
+            <Text style={styles.label}> $ {props.price} </Text>   
+              
             </View>
         </Pressable>
     )
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         padding: 5,
         height: 50,
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         backgroundColor: '#ecf0ee',
         borderColor: 'black',
         borderWidth: 2,
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     },
     label: {
         color: 'black',
-        fontSize: 30,
+        fontSize: 20,
        
     },
     pressIn: {

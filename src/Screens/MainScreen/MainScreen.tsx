@@ -22,11 +22,20 @@ export const MainScreen: React.FC<IMainScreen> = (props) => {
   
   return (
     <View style={styles.container}>
-      <Text>{translate(tokens.screens.screenMain.MainText)}</Text>
+      <View style={styles.headerView}>
+        <Text style={styles.headerText}>{translate(tokens.screens.screenMain.MainText)}</Text>
+      </View>
+      <View style={styles.menu}>
+        <Text>{translate(tokens.screens.screenMain.NameText)}</Text>
+        <Text>{translate(tokens.screens.screenMain.TypeText)}</Text>
+        <Text>{translate(tokens.screens.screenMain.PriceText)}</Text>
+        
+      </View>
       
       <StatusBar style="auto" />
       
-      <FlatList 
+      <FlatList
+      style = {styles.flatlist} 
       data={listItems?.simpleText} 
       keyExtractor={listItems?.simpleText.nameId}
       renderItem={({item, index})=> (<ListItem key={index} name={item.name}
@@ -55,4 +64,27 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
   },
+  headerText:{
+    color: 'white',
+    fontSize: 25,
+    margin: 15
+  },
+  headerView: {
+    backgroundColor: 'green',
+    height: 60,
+    width: "100%",
+
+  },
+  flatlist: {
+    width: "90%"
+  },
+  menu: {
+    width: "100%",
+    height: 30,
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    flexDirection: 'row',
+    borderBottomColor: 'black',
+    borderBottomWidth: 2
+  }
 });

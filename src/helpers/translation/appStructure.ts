@@ -1,6 +1,13 @@
 enum MainScreen {
   MainText = "mainscreen-text",
-  SaveText = "SaveText"
+  SaveText = "SaveText",
+  CancelText = "CancelText",
+  DeleteText = "DeleteText",
+  EditText = "EditText",
+  NewProductText = "NewProductText",
+  NameText = "NameText",
+  PriceText = "PriceText",
+  TypeText = "TypeText"
 } 
 
 enum EditProductScreen {

@@ -3,6 +3,8 @@ import { View, Text, Pressable, StyleSheet } from 'react-native'
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { DemoContext } from '../../../context/DemoContext';
 import { Feather } from '@expo/vector-icons';
+import { translate } from '../../../helpers/translation/translations';
+import { tokens } from '../../../helpers/translation/appStructure';
 
 interface IAddButton {
 
@@ -16,7 +18,7 @@ export const AddButton: React.FC<IAddButton> = (props) => {
         <Pressable onPress={props.onPress} onPressIn={()=>{setIsPressed(true)}} onPressOut={()=>{setIsPressed(false)}}>
             <View style={[styles.button, isPressed?styles.pressIn:styles.default]}>
             <Text style={[styles.label,
-                isPressed?styles.pressIn:styles.default]}> Edit </Text>
+                isPressed?styles.pressIn:styles.default]}> {translate(tokens.screens.screenMain.EditText)} </Text>
             <Feather style={[
                 isPressed?styles.pressIn:styles.default]}name="download" size={30} color="white" />
             </View>

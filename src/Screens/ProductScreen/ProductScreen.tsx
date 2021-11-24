@@ -10,7 +10,9 @@ import { AddButton } from './components/AddButton';
 import { EntryField } from './components/EntryField';
 import { DemoContext } from '../../context/DemoContext';
 import { EntryFieldNumber } from '../EditProductScreen/components/EntryFieldNumber';
-//integrated products may be anywhere within the range of 1000 to 2600 dollars
+import { translate } from '../../helpers/translation/translations';
+import { tokens } from '../../helpers/translation/appStructure';
+
 interface IProductScreen
 
   extends NativeStackScreenProps<StackScreens, "ProductScreen"> { }
@@ -27,7 +29,7 @@ export const ProductScreen: React.FC<IProductScreen> = (props) => {
     <View style={styles.container}>
       <StatusBar style="auto" />
 
-      <Text style={styles.text}>Create new product</Text>
+      <Text style={styles.text}>{translate(tokens.screens.screenMain.NewProductText)}</Text>
       <EntryField label="Name" defaultValue="Name" OnTextChanged={(text) => setName(text)} />
       <Text style={styles.error}>{errorName}</Text>
       <EntryField label="Price" defaultValue= "Price"  OnTextChanged={(text) => setPrice(text)}/>
