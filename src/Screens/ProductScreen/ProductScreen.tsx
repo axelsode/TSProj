@@ -47,12 +47,12 @@ export const ProductScreen: React.FC<IProductScreen> = (props) => {
           onPress={() => {console.log(name),
             console.log(price)
             console.log(selectedValue)
+            const checkName = listItems.itemList?.some((el: { name: string; }) => el.name == name)
             
-            const checkName = listItems?.simpleText.some((el: { name: string; }) => el.name == name)
             console.log(checkName)
             if((name != "") && !checkName && ((parseFloat(price) > 0) && (selectedValue=='Peripheral') && (parseFloat(price) < 1000) ||
              ((parseFloat(price) >= 1000) && (selectedValue=='Integrated') && (parseFloat(price) < 2600)))){
-              listItems?.setSimpleText([...listItems.simpleText, { name:name, price:price, type:selectedValue}])
+              listItems.addItem({ name:name, price:parseFloat(price), type:selectedValue})
               props.navigation.navigate("MainScreen")
             } else if(checkName || (name == "")) {
               setErrorName(translate(tokens.screens.screenProduct.ErrorName))

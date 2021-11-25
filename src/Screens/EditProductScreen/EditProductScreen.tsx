@@ -53,16 +53,13 @@ export const EditProductScreen: React.FC<IEditProductScreen> = (props) => {
             console.log(price)
             console.log(selectedValue)
 
-            const newList = listItems?.simpleText.filter(function (el: any) {
-              return el.name != params.nameId    
-            })
-            const checkName = newList.some((el: { name: string; }) => el.name == name)
-            if(!checkName && ((price > 0) && (selectedValue=='Peripheral') && (price < 1000)) ||
+            
+            
+            if((name != "") && ((price > 0) && (selectedValue=='Peripheral') && (price < 1000)) ||
              (price >= 1000) && (selectedValue=='Integrated')){
-              
-              listItems?.setSimpleText([...newList, { name:name, price:price, type:selectedValue}])
+              listItems.updateItem({name:name, price:price, type:selectedValue}, params.nameId)
               props.navigation.navigate("MainScreen")
-          } else if(checkName || (name == "")) {
+          } else if((name == "")) {
             setErrorName(translate(tokens.screens.screenProduct.ErrorName))
             setErrorPrice("")
           } else if(selectedValue == 'Peripheral'){
@@ -82,10 +79,7 @@ export const EditProductScreen: React.FC<IEditProductScreen> = (props) => {
       <View style={styles.buttonConatiner}>
       <DeleteButton
         onPress={() => {console.log(params.nameId)
-          const newList = listItems?.simpleText.filter(function (el: any) {
-            return el.name != params.nameId    
-          })
-          listItems?.setSimpleText([...newList])
+          listItems.removeItem(params.nameId)
             props.navigation.navigate("MainScreen")
           }} >
         </DeleteButton>
