@@ -9,6 +9,7 @@ import { FlatList} from 'react-native-gesture-handler';
 import { Context } from '../../context/Context';
 import { translate } from '../../helpers/translation/translations';
 import { tokens } from '../../helpers/translation/appStructure'
+import { Item } from 'react-native-paper/lib/typescript/components/List/List';
 
 interface IMainScreen
 
@@ -18,8 +19,9 @@ extends NativeStackScreenProps<StackScreens, "MainScreen"> {}
 export const MainScreen: React.FC<IMainScreen> = (props) => {
   const listItems = useContext(Context)
   
-
   
+  console.log(listItems)
+
   return (
     <View style={styles.container}>
       <View style={styles.headerView}>
@@ -36,8 +38,8 @@ export const MainScreen: React.FC<IMainScreen> = (props) => {
       
       <FlatList
       style = {styles.flatlist} 
-      data={listItems?.simpleText} 
-      keyExtractor={listItems?.simpleText.nameId}
+      data={listItems.itemList} 
+      keyExtractor={(item) => item.name}
       renderItem={({item, index})=> (<ListItem key={index} name={item.name}
       price={item.price} type={item.type} onPress={() => props.navigation.navigate("EditProductScreen", {nameId: item.name, price: item.price, type: item.type})}/>)} 
      />

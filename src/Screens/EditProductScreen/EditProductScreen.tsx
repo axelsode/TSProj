@@ -52,22 +52,18 @@ export const EditProductScreen: React.FC<IEditProductScreen> = (props) => {
           onPress={() => {console.log(name),
             console.log(price)
             console.log(selectedValue)
+            const checkName = listItems.itemList?.some((el: { name: string; }) => el.name == name)
 
-            const newList = listItems?.simpleText.filter(function (el: any) {
-              return el.name != params.nameId    
-            })
-            const checkName = newList.some((el: { name: string; }) => el.name == name)
-            if(!checkName && ((price > 0) && (selectedValue=='Peripheral') && (price < 1000)) ||
+            if((name != "") && !checkName && ((price > 0) && (selectedValue=='Peripheral') && (price < 1000)) ||
              (price >= 1000) && (selectedValue=='Integrated')){
-              
-              listItems?.setSimpleText([...newList, { name:name, price:price, type:selectedValue}])
+              listItems.updateItem({name:name, price:price, type:selectedValue}, params.nameId)
               props.navigation.navigate("MainScreen")
-          } else if(checkName || (name == "")) {
+          } else if((name == "" ) || checkName) {
             setErrorName(translate(tokens.screens.screenProduct.ErrorName))
             setErrorPrice("")
           } else if(selectedValue == 'Peripheral'){
             setErrorPrice(translate(tokens.screens.screenProduct.ErrorPrice1))
-            setErrorName("")
+            setErrorName("") 
           } else{
             setErrorPrice(translate(tokens.screens.screenProduct.ErrorPrice2))
             setErrorName("")
@@ -82,10 +78,7 @@ export const EditProductScreen: React.FC<IEditProductScreen> = (props) => {
       <View style={styles.buttonConatiner}>
       <DeleteButton
         onPress={() => {console.log(params.nameId)
-          const newList = listItems?.simpleText.filter(function (el: any) {
-            return el.name != params.nameId    
-          })
-          listItems?.setSimpleText([...newList])
+          listItems.removeItem(params.nameId)
             props.navigation.navigate("MainScreen")
           }} >
         </DeleteButton>
