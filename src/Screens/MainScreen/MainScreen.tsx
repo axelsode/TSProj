@@ -9,6 +9,7 @@ import { FlatList} from 'react-native-gesture-handler';
 import { Context } from '../../context/Context';
 import { translate } from '../../helpers/translation/translations';
 import { tokens } from '../../helpers/translation/appStructure'
+import { Item } from 'react-native-paper/lib/typescript/components/List/List';
 
 interface IMainScreen
 
@@ -18,8 +19,9 @@ extends NativeStackScreenProps<StackScreens, "MainScreen"> {}
 export const MainScreen: React.FC<IMainScreen> = (props) => {
   const listItems = useContext(Context)
   
-
   
+  console.log(listItems)
+
   return (
     <View style={styles.container}>
       <View style={styles.headerView}>

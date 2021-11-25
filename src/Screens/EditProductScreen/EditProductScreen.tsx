@@ -52,19 +52,18 @@ export const EditProductScreen: React.FC<IEditProductScreen> = (props) => {
           onPress={() => {console.log(name),
             console.log(price)
             console.log(selectedValue)
+            const checkName = listItems.itemList?.some((el: { name: string; }) => el.name == name)
 
-            
-            
-            if((name != "") && ((price > 0) && (selectedValue=='Peripheral') && (price < 1000)) ||
+            if((name != "") && !checkName && ((price > 0) && (selectedValue=='Peripheral') && (price < 1000)) ||
              (price >= 1000) && (selectedValue=='Integrated')){
               listItems.updateItem({name:name, price:price, type:selectedValue}, params.nameId)
               props.navigation.navigate("MainScreen")
-          } else if((name == "")) {
+          } else if((name == "" ) || checkName) {
             setErrorName(translate(tokens.screens.screenProduct.ErrorName))
             setErrorPrice("")
           } else if(selectedValue == 'Peripheral'){
             setErrorPrice(translate(tokens.screens.screenProduct.ErrorPrice1))
-            setErrorName("")
+            setErrorName("") 
           } else{
             setErrorPrice(translate(tokens.screens.screenProduct.ErrorPrice2))
             setErrorName("")

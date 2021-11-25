@@ -49,7 +49,8 @@ export const ProductScreen: React.FC<IProductScreen> = (props) => {
             console.log(selectedValue)
             const checkName = listItems.itemList?.some((el: { name: string; }) => el.name == name)
             
-            console.log(checkName)
+            console.log("!!" , checkName)
+
             if((name != "") && !checkName && ((parseFloat(price) > 0) && (selectedValue=='Peripheral') && (parseFloat(price) < 1000) ||
              ((parseFloat(price) >= 1000) && (selectedValue=='Integrated') && (parseFloat(price) < 2600)))){
               listItems.addItem({ name:name, price:parseFloat(price), type:selectedValue})

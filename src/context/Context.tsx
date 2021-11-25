@@ -9,7 +9,7 @@ export interface IItemObject {
 export interface IItemObjectList extends Array<IItemObject> {}
 
 export interface IContext {
-    itemList?: IItemObjectList,
+    itemList: IItemObjectList,
     addItem: (item: IItemObject) => void;
     removeItem: (name: string) => void;
     updateItem: (newItem: IItemObject, oldName: string) => void;
@@ -17,8 +17,8 @@ export interface IContext {
 }
 
 export const initialValues = {
-    items: [
-       
+    itemList: [
+      
     ] as IItemObjectList,
     addItem: () => {
     },
@@ -42,28 +42,30 @@ export const ContextProvider: React.FC = (props) => {
       addItem: (item: IItemObject) => {
           console.log("log", "addItem")
           console.log("length", itemListState)
-        const list = itemListState.items
+        const list = [...itemListState.itemList]
+        
         list.push(item)
+        console.log("test", list, typeof list)
         setItemListState({
             ...itemListState,
-            items: list
+            itemList: list
         })
     },
     removeItem: (name: string) => {
         setItemListState({
             ...itemListState,
-            items: itemListState.items.filter((i) => {
+            itemList: itemListState.itemList.filter((i) => {
                 return i.name != name
             })
         })
     },
     updateItem: ( newItem: IItemObject, oldName: string) => {
-        var newList: IItemObject[] = itemListState.items.filter(function (el: IItemObject) {
+        var newList: IItemObject[] = itemListState.itemList.filter(function (el: IItemObject) {
             return el.name != oldName  })
             newList.push(newItem)
             setItemListState({
             ...itemListState,
-            items: newList
+            itemList: newList
         })
     }
             
