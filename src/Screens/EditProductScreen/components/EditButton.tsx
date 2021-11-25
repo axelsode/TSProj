@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native'
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { DemoContext } from '../../../context/DemoContext';
+import { Context } from '../../../context/Context';
 import { Feather } from '@expo/vector-icons';
 import { translate } from '../../../helpers/translation/translations';
 import { tokens } from '../../../helpers/translation/appStructure';
@@ -11,7 +11,7 @@ interface IAddButton {
     onPress: () => void;
 }
 export const AddButton: React.FC<IAddButton> = (props) => {
-    const context = React.useContext(DemoContext)
+    const context = React.useContext(Context)
     const [isPressed, setIsPressed] = useState(false);
 
     return (

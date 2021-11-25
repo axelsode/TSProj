@@ -8,7 +8,7 @@ import { FAB } from 'react-native-paper';
 import { CancelButton } from './components/CancelButton';
 import { AddButton } from './components/AddButton';
 import { EntryField } from './components/EntryField';
-import { DemoContext } from '../../context/DemoContext';
+import { Context } from '../../context/Context';
 import { EntryFieldNumber } from '../EditProductScreen/components/EntryFieldNumber';
 import { translate } from '../../helpers/translation/translations';
 import { tokens } from '../../helpers/translation/appStructure';
@@ -19,7 +19,7 @@ interface IProductScreen
   
 
 export const ProductScreen: React.FC<IProductScreen> = (props) => {
-  const listItems = useContext(DemoContext)
+  const listItems = useContext(Context)
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const[errorName, setErrorName] = useState("");

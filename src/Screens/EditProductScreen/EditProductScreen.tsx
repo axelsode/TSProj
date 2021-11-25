@@ -9,7 +9,7 @@ import { CancelButton } from './components/CancelButton';
 import { AddButton } from './components/EditButton';
 import {DeleteButton} from './components/DeleteButton'
 import { EntryField } from './components/EntryFieldText';
-import { DemoContext } from '../../context/DemoContext';
+import { Context } from '../../context/Context';
 import { EntryFieldNumber } from './components/EntryFieldNumber';
 import { translate } from '../../helpers/translation/translations';
 import { tokens } from '../../helpers/translation/appStructure';
@@ -20,7 +20,7 @@ interface IEditProductScreen
   
 
 export const EditProductScreen: React.FC<IEditProductScreen> = (props) => {
-  const listItems = useContext(DemoContext)
+  const listItems = useContext(Context)
   const params = props.route.params;
   const [name, setName] = useState(params.nameId);
   const [price, setPrice] = useState(params.price);
@@ -35,7 +35,7 @@ export const EditProductScreen: React.FC<IEditProductScreen> = (props) => {
       <Text style={styles.text}>{translate(tokens.screens.screenEditProduct.HeaderName)}</Text>
       <EntryField label={translate(tokens.screens.screenProduct.NameText)} defaultValue={params.nameId} OnTextChanged={(text) => setName(text)} />
       <Text style={styles.error}>{errorName}</Text>
-      <EntryFieldNumber label={translate(tokens.screens.screenProduct.PriceText)} defaultValue={params.price} OnTextChanged={(text) => setPrice(text)}/>
+      <EntryField label={translate(tokens.screens.screenProduct.PriceText)} defaultValue={params.price.toString()} OnTextChanged={(text) => setPrice(text)}/>
       <Text style={styles.error}>{errorPrice}</Text>
       <Picker
         selectedValue={selectedValue}
@@ -57,8 +57,8 @@ export const EditProductScreen: React.FC<IEditProductScreen> = (props) => {
               return el.name != params.nameId    
             })
             const checkName = newList.some((el: { name: string; }) => el.name == name)
-            if(!checkName && ((price > 0) && (selectedValue=='Integrated') && (price < 1000)) ||
-             (price >= 1000) && (selectedValue=='Peripheral')){
+            if(!checkName && ((price > 0) && (selectedValue=='Peripheral') && (price < 1000)) ||
+             (price >= 1000) && (selectedValue=='Integrated')){
               
               listItems?.setSimpleText([...newList, { name:name, price:price, type:selectedValue}])
               props.navigation.navigate("MainScreen")
@@ -69,7 +69,7 @@ export const EditProductScreen: React.FC<IEditProductScreen> = (props) => {
             setErrorPrice(translate(tokens.screens.screenProduct.ErrorPrice1))
             setErrorName("")
           } else{
-            setErrorPrice(tokens.screens.screenProduct.ErrorPrice2)
+            setErrorPrice(translate(tokens.screens.screenProduct.ErrorPrice2))
             setErrorName("")
           }
          }} >

@@ -6,7 +6,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { FAB } from 'react-native-paper';
 import { ListItem } from './components/ListItem';
 import { FlatList} from 'react-native-gesture-handler';
-import { DemoContext } from '../../context/DemoContext';
+import { Context } from '../../context/Context';
 import { translate } from '../../helpers/translation/translations';
 import { tokens } from '../../helpers/translation/appStructure'
 
@@ -16,7 +16,7 @@ extends NativeStackScreenProps<StackScreens, "MainScreen"> {}
 
 
 export const MainScreen: React.FC<IMainScreen> = (props) => {
-  const listItems = useContext(DemoContext)
+  const listItems = useContext(Context)
   
 
   

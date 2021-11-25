@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { DemoContextProvider } from './src/context/DemoContext';
+import { ContextProvider } from './src/context/Context';
 import { NavigationContainer } from '@react-navigation/native';
 import { MainScreen } from './src/Screens/MainScreen/MainScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -16,7 +16,7 @@ const Stack = createNativeStackNavigator<StackScreens>();
 setI18nConfig();
 
 const App = () =>
-  <DemoContextProvider>
+  <ContextProvider>
     <NavigationContainer>
       <Stack.Navigator initialRouteName="MainScreen">
         <Stack.Screen name="MainScreen" component={MainScreen} options={{ headerShown: false }} />
@@ -24,7 +24,7 @@ const App = () =>
         <Stack.Screen name="ProductScreen" component={ProductScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
-  </DemoContextProvider>
+  </ContextProvider>
 export default App
 const styles = StyleSheet.create({
   container: {

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native'
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { DemoContext } from '../../../context/DemoContext';
+import { Context } from '../../../context/Context';
 import { Foundation } from '@expo/vector-icons';
 import { tokens } from '../../../helpers/translation/appStructure';
 import { translate } from '../../../helpers/translation/translations';
@@ -11,7 +11,7 @@ interface ICancelButton {
     onPress: () => void;
 }
 export const CancelButton: React.FC<ICancelButton> = (props) => {
-    const context = React.useContext(DemoContext)
+    const context = React.useContext(Context)
     const [isPressed, setIsPressed] = useState(false);
 
     return (
